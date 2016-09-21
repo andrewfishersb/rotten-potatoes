@@ -3,11 +3,14 @@
 <p>$movie.getReleaseDate()</p>
 
 <form action="/genre/$movie.getId()/movie/$movie.getId()" method="post">
-  <label for="name">Movie Title</label>
-  <input id="name" name="name" type="text">
+  <div class="form-group">
+    <label for="name">Movie Title</label>
+    <input id="name" class="form-control" name="name" type="text">
+  </div>
+
 
   <label for="releaseDate">Release Date</label>
-  <input id="releaseDate" name="releaseDate" type="date">
+  <input id="releaseDate" class="form-control" name="releaseDate" type="date">
   <button type="submit" class="btn btn-info">Update Movie</button>
 </form>
 
@@ -15,6 +18,29 @@
 <form action="/genre/$genre.getId()/movie/$movie.getId()/delete" method="post">
   <button type="submit" class="btn btn-danger" id="delete-movie">Delete Movie</button>
 </form>
+
+<h3>Add a Review Below</h3>
+<form action="/genre/$movie.getId()/movie/$movie.getId()" method="post" id="usrform">
+  <button type="submit" name="button" class="btn btn-danger">Add a Review</button>
+  <div class="form-group">
+    <label for="username">Enter Your Username</label>
+    <input type="text" class="form-control" name="username">
+  </div>
+  <div class="form-group">
+    <label for="rating">Enter a rating</label>
+    <input type="number" max='100' min='0' class="form-control" name="rating">
+  </div>
+  <label for="userreview">Type Review Below</label>
+</form>
+<textarea name="userreview" form="usrform" rows="8" cols="100"></textarea>
+#foreach($review in $reviews)
+  <li>$review.getUserName(): $review.getRating()%</li>
+  <p>
+    $review.getUserReview()
+  </p>
+#end
+
+
 
 <a href = "/genre/$genre.getId()">Back to Genre</a>
 <a href = "/">Back to Homepage</a>

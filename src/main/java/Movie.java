@@ -8,7 +8,6 @@ public class Movie{
   private int id;
   private int genreId;
 
-
   public Movie(String name, String releaseDate, int genreID){
     this.name = name;
     this.releaseDate = releaseDate;
@@ -30,6 +29,7 @@ public class Movie{
   public int getGenreId(){
     return genreId;
   }
+
 
   public static List<Movie> all(){
     String sql = "SELECT * FROM movies";
@@ -84,5 +84,11 @@ public class Movie{
   public void formatDate(){
     String [] dateArray = releaseDate.split("-");
     this.releaseDate = dateArray[1]+"/"+dateArray[2]+"/"+dateArray[0];
+  }
+  public List<Review> getReviews(){
+    String sql = "SELECT * FROM reviews WHERE reviewId =:id";
+    try(Connection con = DB.sql2o.open()){
+      return con.createQuery(sql).addParameter("id",this.id).executeAndFetch(Review.class);
+    }
   }
 }

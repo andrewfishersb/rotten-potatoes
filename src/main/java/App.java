@@ -112,7 +112,11 @@ public class App {
       HashMap<String, Object> model = new HashMap<String, Object>();
       Genre aGenre = Genre.find(Integer.parseInt(request.params("id")));
       aGenre.delete();
-      model.put("template", "templates/delete-success.vtl");
+      for(Movie aMovie : aGenre.getMovies()){
+        aMovie.delete();
+      }
+      model.put("genres",Genre.all());
+      model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
   }
