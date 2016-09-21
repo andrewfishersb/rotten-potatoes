@@ -1,0 +1,14 @@
+<h2>Welcome to Rotten Potatoes</h2>
+<form action="/" method="post">
+  <label for="genre">Add a Genre</label>
+  <input type="text" id="genre" name="genre">
+</form>
+
+#foreach($genre in $genres)
+  <li><a href="/genre/$genre.getId()">$genre.getName()</a></li>
+#end
+
+
+<form action="/genres/1/$movie.getId()" method="post">
+
+</form>
