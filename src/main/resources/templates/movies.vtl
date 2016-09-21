@@ -1,0 +1,13 @@
+<h1>Movies!</h1>
+
+#if ($movies)
+  <ul>
+    #foreach ($movie in $movies)
+      <li><a href="/genre/$movie.getGenreId()/movie/$movie.getId()">$movie.getName()</a></li>
+    #end
+  </ul>
+#else
+  <p>No Movies!</p>
+#end
+
+<a href="/">Return to homepage</a>

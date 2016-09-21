@@ -2,13 +2,28 @@
 <form action="/" method="post">
   <label for="genre">Add a Genre</label>
   <input type="text" id="genre" name="genre">
+  <button type="submit" class="btn btn-success">Add Genre</button>
+
 </form>
 
 #foreach($genre in $genres)
   <li><a href="/genre/$genre.getId()">$genre.getName()</a></li>
 #end
-
-
-<form action="/genres/1/$movie.getId()" method="post">
-
+<h3>Movies</h3>
+<form action="/genre/genreId" method="post">
+  <label for="movie-title">Enter a Movie Title</label>
+  <input id="movie-title" name="movie-title" type="text">
+  <div class="form-group">
+   <label for="movie-release-date">Enter Release Date</label>
+   <input type="date" class="form-control" name="movie-release-date">
+ </div>
+  <label for="genreId">Select the movies genre</label>
+  <select id='genreId' name='genreId' type='text'>
+    #foreach($genre in $genres)
+      <option id="genre-id" value="$genre.getId()">$genre.getName()</option>
+    #end
+  </select>
+  <button type="submit" class="btn btn-success">Add Movie</button>
 </form>
+
+<a href="/movies">See all movies</a>

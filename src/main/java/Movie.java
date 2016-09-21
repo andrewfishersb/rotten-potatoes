@@ -81,4 +81,8 @@ public class Movie{
       con.createQuery(sql).addParameter("name", name).addParameter("releaseDate", releaseDate).addParameter("genreId", genreId).addParameter("id", this.id).executeUpdate();
     }
   }
+  public void formatDate(){
+    String [] dateArray = releaseDate.split("-");
+    this.releaseDate = dateArray[1]+"/"+dateArray[2]+"/"+dateArray[0];
+  }
 }

@@ -66,4 +66,16 @@ public class GenreTest {
       aGenre.update("Sci-Fi");
       assertEquals("Sci-Fi",Genre.find(aGenre.getId()).getName());
     }
+
+    @Test
+    public void getMovies_RetrieveAllMoviesFromOneGenre_List(){
+      Genre aGenre = new Genre("Western");
+      aGenre.save();
+      Movie aMovie = new Movie("Magnificent 7","Octorber 23,1960" ,aGenre.getId());
+      aMovie.save();
+      Movie anotherMovie = new Movie("Good the Bad and The Ugly","December 29,1966" ,aGenre.getId());
+      anotherMovie.save();
+      assertTrue(aGenre.getMovies().equals(Movie.all()));
+
+    }
  }

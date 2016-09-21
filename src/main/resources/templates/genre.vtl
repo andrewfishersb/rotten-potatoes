@@ -1,0 +1,18 @@
+<h2>$genre.getName()</h2>
+#foreach($movie in $movies)
+  <li><a href="/genre/$genre.getId()/movie/$movie.getId()">$movie.getName()</a></li>
+#end
+
+<form action="/genre/$genre.getId()" method="post">
+  <label for="genre">Genre</label>
+  <input id="genre" name="genre" type="text">
+  <button type="submit" class="btn btn-info">Update Genre</button>
+</form>
+
+<form action="/genre/$genre.getId()/delete" method="post">
+  <button type="submit" class="btn btn-danger" id="delete-movie">Delete Genre</button>
+</form>
+
+<!-- send to its own page -->
+<a href="/">Go to Homepage</a>
+<a href="/genre/$genre.getId()">See Other movies in this genre</a>

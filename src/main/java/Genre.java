@@ -67,4 +67,11 @@ private int id;
     }
   }
 
+  public List<Movie> getMovies(){
+    String sql = "SELECT * FROM movies WHERE genreId =:id";
+    try(Connection con = DB.sql2o.open()){
+      return con.createQuery(sql).addParameter("id",this.id).executeAndFetch(Movie.class);
+    }
+  }
+
 }

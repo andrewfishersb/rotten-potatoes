@@ -1,0 +1,21 @@
+<h2>$movie.getName()</h2>
+<p>$genre.getName()</p>
+<p>$movie.getReleaseDate()</p>
+
+<form action="/genre/$movie.getId()/movie/$movie.getId()" method="post">
+  <label for="name">Movie Title</label>
+  <input id="name" name="name" type="text">
+
+  <label for="releaseDate">Release Date</label>
+  <input id="releaseDate" name="releaseDate" type="date">
+  <button type="submit" class="btn btn-info">Update Movie</button>
+</form>
+
+
+<form action="/genre/$genre.getId()/movie/$movie.getId()/delete" method="post">
+  <button type="submit" class="btn btn-danger" id="delete-movie">Delete Movie</button>
+</form>
+
+<a href = "/genre/$genre.getId()">Back to Genre</a>
+<a href = "/">Back to Homepage</a>
+<a href = "/movies">Back to Movies</a>
