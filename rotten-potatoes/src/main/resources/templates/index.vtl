@@ -1,0 +1,53 @@
+<div class="row" id="rowbar">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <ul class="nav nav-pills" role="tablist">
+        <li role="presentation"><a href = "/movies">List All Movies</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<h1 class="jumbotron genrefront" >Welcome to Rotten Potatoes</h1>
+<div class="row">
+  <div class="col-sm-6">
+    <form action="/" method="post">
+      <div class="form-group">
+        <label for="genre">Add a Genre</label>
+        <input type="text" id="genre" class="form-control" name="genre" required>
+      </div>
+      <button type="submit" class="btn btn-success">Add Genre</button>
+    </form>
+    <h3>Movies</h3>
+    <form action="/genre/genreId" method="post">
+      <div class="form-group">
+        <label for="movie-title">Enter a Movie Title</label>
+        <input id="movie-title" class="form-control" name="movie-title" type="text" required>
+      </div>
+      <div class="form-group">
+       <label for="movie-release-date" >Enter Release Date</label>
+       <input type="date" class="form-control" name="movie-release-date" required>
+     </div>
+      <label for="genreId">Select the movies genre</label>
+      <select id='genreId' name='genreId' type='text' class="form-control">
+        #foreach($genre in $genres)
+          <option id="genre-id" value="$genre.getId()">$genre.getName()</option>
+        #end
+      </select>
+      <button type="submit" class="btn btn-success">Add Movie</button>
+    </form>
+  </div>
+  <div class="col-sm-6">
+    <div id="scrollhome">
+    #foreach($genre in $genres)
+      <h3 id="homegenre"><a href="/genre/$genre.getId()">$genre.getName()</a></h3>
+    #end
+    <h3 id="homegenre"><a href="/movies"><strong><em>All Movies</em></strong></a></h3>
+
+  </div>
+  </div>
+</div>
+
+
+
+</div>

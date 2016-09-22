@@ -1,0 +1,69 @@
+<div class="row" id="rowbar">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <ul class="nav nav-pills" role="tablist">
+        <li role="presentation" ><a href = "/">Back to Homepage</a></li>
+        <li role="presentation"><a href = "/genre/$genre.getId()">Back to Genre</a></li>
+        <li role="presentation"><a href = "/movies">Back to Movies</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+
+
+
+  <div class="jumbotron">
+    <h1>$movie.getName()</h1>
+    <h3>Genre: $genre.getName()</h3>
+    <h3>Release Date: $movie.getReleaseDate()</h3>
+    <h3>Score: $movie.averageRating()%</h3>
+  </div>
+
+
+
+<div class="row">
+  <div class="col-sm-6">
+    <form action="/genre/$movie.getId()/movie/$movie.getId()" method="post">
+      <div class="form-group">
+        <label for="name">Movie Title</label>
+        <input id="name" class="form-control" name="name" type="text" required>
+      </div>
+
+
+      <label for="releaseDate">Release Date</label>
+      <input id="releaseDate" class="form-control" name="releaseDate" type="date" required>
+      <button type="submit" class="btn btn-info">Update Movie</button>
+    </form>
+
+    <form action="/genre/$genre.getId()/movie/$movie.getId()/delete" method="post">
+      <button type="submit" class="btn btn-danger" id="delete-movie">Delete Movie</button>
+    </form>
+    <br>
+    <h3>Add a Review Below</h3>
+    <form action="/genre/$genre.getId()/movie/$movie.getId()/added-review" method="post" id="usrform">
+      <div class="form-group">
+        <label for="username">Enter Your Username</label>
+        <input type="text" class="form-control" name="username" required>
+      </div>
+      <div class="form-group">
+        <label for="rating">Enter a rating</label>
+        <input type="number" max='100' min='0' placeholder="0 - 100"class="form-control" name="rating" required>
+      </div>
+      <textarea class="form-control" name="userreview" placeholder="Enter Review Here..." form="usrform" rows="12" cols="100" required></textarea>
+
+      <button type="submit" name="button" class="btn btn-warning">Add a Review</button>
+    </form>
+  </div>
+  <div class="col-sm-6" >
+    <div id="scroll">
+      #foreach($review in $reviews)
+        <h2>$review.getUserName(): $review.getRating()</h2>
+        <p style="margin-left: 40px">
+          $review.getUserReview()
+        </p>
+      #end
+    </div>
+  </div>
+
+</div>

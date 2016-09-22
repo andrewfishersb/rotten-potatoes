@@ -1,0 +1,30 @@
+<div class="row" id="rowbar">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <ul class="nav nav-pills" role="tablist">
+        <li role="presentation" ><a href = "/">Back to Homepage</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<h1 id="movie">Movies!</h1>
+
+<div class="jumbotron">
+  <div class="row">
+    <h3 class ="col-sm-10" id="title">Title</h3>
+    <h3 class="col-sm-2" id="rating">Rating</h3>
+  </div>
+  #if ($movies)
+    <ul>
+      #foreach ($movie in $movies)
+      <div class="row">
+        <h3 class ="col-sm-10"><a href="/genre/$movie.getGenreId()/movie/$movie.getId()">$movie.getName():</a></h3>
+        <h3 class="col-sm-2" >$movie.averageRating()%</h3>
+      </div>
+      #end
+    </ul>
+  #else
+    <p>No Movies!</p>
+  #end
+</div>
