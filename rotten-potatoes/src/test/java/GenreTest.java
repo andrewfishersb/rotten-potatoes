@@ -67,6 +67,7 @@ public class GenreTest {
       assertEquals("Sci-Fi",Genre.find(aGenre.getId()).getName());
     }
 
+    //Wrong this will grab every movie even not part of this genre
     @Test
     public void getMovies_RetrieveAllMoviesFromOneGenre_List(){
       Genre aGenre = new Genre("Western");
